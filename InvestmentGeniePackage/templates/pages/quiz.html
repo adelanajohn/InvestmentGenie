@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock header %}
+
+
+{% block content %} 
+  <p>    
+    Question {{ questionIndex }} of {{ questionCount }}.
+  </p>
+  <p>.</p>
+  <p></p>
+
+  <p><strong>{{ question }}</strong></p>
+  
+  
+  <form method="post" action="/quiz">
+
+    
+    <div class="form-group">
+        <input type="radio" id="optionA" name="QuestionOptions" value="A">
+        <label for="optionA">{{ option1 }}</label><br>
+    </div>    
+    <div class="form-group">
+        <input type="radio" id="optionB" name="QuestionOptions" value="B">
+        <label for="optionB">{{ option2 }}</label><br> 
+    </div>
+    <div class="form-group">
+        <input type="radio" id="optionC" name="QuestionOptions" value="C">
+        <label for="optionC">{{ option3 }}</label><br>
+    </div>
+    <div class="form-group">
+        <input type="radio" id="optionD" name="QuestionOptions" value="D">
+        <label for="optionD">{{ option4 }}</label><br><br>
+    </div> 
+    
+    <div class="form-group">
+        <input type="submit" value="Submit" class="submit-btn">
+    </div>
+
+  </form>
+
+
+  <button onclick="showAnswer()">Show Answer...</button>
+  <div id="divAnswer" style="display: none;">
+    <p>{{ answer }}</p>   
+  </div>
+
+	<script>
+      function showAnswer() {
+        var x = document.getElementById("divAnswer");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+	</script>
+{% endblock content %}

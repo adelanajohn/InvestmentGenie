@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Investment Genie Recommendations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+<h1>Investment Genie Recommendations</h1>
+<section>
+  <header>
+    {% block header %}{% endblock header %}
+  </header>
+
+  <main>
+    <h2>Personal Details</h2>
+
+    <table>
+      <tr>
+        <th>Item</th>
+        <th>Details</th>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td>{{ _name }}</td>
+      </tr>
+      <tr>
+        <td>Age</td>
+        <td>{{ _age }} years</td>
+      </tr>
+      <tr>
+        <td>Risk Appetite</td>
+        <td>{{ _risk_appetite.upper() }}</td>
+      </tr>
+      <tr>
+        <td>Retirement Age</td>
+        <td>{{ _retirement_age }} years</td>
+      </tr>
+      <tr>
+        <td>Amount to Invest</td>
+        <td>{{ "${:,.2f}".format(_amount_to_invest) }}</td>
+      </tr>
+      <tr>
+        <td>Marital Status</td>
+        <td>{{ _marital_status.upper() }}</td>
+      </tr>
+      <tr>
+        <td>Number of Kids</td>
+        <td>{{ _number_of_kids }}</td>
+      </tr>
+    </table>
+    <br></br>    
+    
+    <h2>Summary</h2>
+    <div class="summaryDiv">{{ _summary }}</div>
+    <br></br>    
+    
+    <h2>Investment Recommendations</h2>
+    <div id="content-database">
+      {{ _investment_advice_table | safe }}
+    </div>
+    <br></br>
+
+    <canvas id="investmentAllocationChart" style="width:100%;max-width:900px"></canvas>
+    <br></br>
+
+    <canvas id="investmentAllocationAmountChart" style="width:100%;max-width:900px"></canvas>
+    <br></br>
+
+    <h2>Additional Note</h2>
+    <div class="notesDiv">{{ _additional_note }}</div>
+    <br></br>
+    
+    <h2>Resources</h2>
+    <div id="content-database">
+      {{ _resources_table | safe }}
+    </div>
+    <br></br>
+    
+    <p>
+      Take the investment advice again: <a href="{{ url_for('pages.home') }}">Investment Genie Home</a>.
+    </p>
+    <br></br>
+
+  </main>
+</section>
+
+<script>
+  var xValues = JSON.parse('{{ chart_x_values | tojson | safe }}');
+  var yValues = JSON.parse("{{ chart_y_values | tojson | safe }}");
+  var barColors = [
+    "#3266cc",
+    "#dc3812",
+    "#fe9900",
+    "#109619",
+    "#990099"
+  ];
+
+  new Chart("investmentAllocationChart", {
+    type: "doughnut",
+    data: {
+      labels: xValues,
+      datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Investment Allocation"
+      }
+    }
+  });
+  </script>
+
+  <script>
+    const xValues2 = JSON.parse('{{ chart_x_values | tojson | safe }}');
+    const yValues2 = JSON.parse("{{ chart_y_values | tojson | safe }}");
+    const barColors2 = ["#3266cc", "#dc3812","#fe9900","#109619","#990099"];
+
+    new Chart("investmentAllocationAmountChart", {
+      type: "bar",
+      data: {
+        labels: xValues2,
+        datasets: [{
+          backgroundColor: barColors2,
+          data: yValues2
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Investment Allocation Amount"
+        }
+      }
+    });
+    </script>
+
+</body>
+</html>
+

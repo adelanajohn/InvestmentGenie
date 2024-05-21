@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h2>{% block title %}Home{% endblock title %}</h2>
+{% endblock header %}
+
+{% block content %}
+  <p>
+    Your Trusted Investment Advisor
+  </p>
+  
+  <form method="post" action="/recommendations">
+    
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="text" id="Name" name="Name" class="form-control"><br>
+    </div>
+
+    <div class="form-group">
+      <label for="Age">Age:</label>
+      <select name="Age" id="Age" class="form-control">
+        {% for i in range(18, 71) %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="RiskAppetite">Risk Appetite:</label>
+      <select name="RiskAppetite" id="RiskAppetite" class="form-control">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="RetirementAge">Retirement Age:</label>
+      <select name="RetirementAge" id="RetirementAge" class="form-control">
+        {% for i in range(30, 76) %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="AmountToInvest">Amount to Invest:</label>
+      <select name="AmountToInvest" id="AmountToInvest" class="form-control">
+        <option value="50000">$50,000 - $99,999</option>
+        <option value="100000">$100,000 - $199,999</option>
+        <option value="200000">$200,000 - $299,999</option>
+        <option value="300000">$300,000 - $399,999</option>
+        <option value="400000">$400,000 - $499,999</option>
+        <option value="500000">$500,000 - $599,999</option>
+        <option value="600000">$600,000 - $699,999</option>
+        <option value="700000">$700,000 - $799,999</option>
+        <option value="800000">$800,000 - $899,999</option>
+        <option value="900000">$900,000 - $999,999</option>
+        <option value="1000000">$1,000,000</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="MaritalStatus">Marital Status:</label>
+      <select name="MaritalStatus" id="MaritalStatus" class="form-control">
+        <option value="Single">Single</option>
+        <option value="Married">Married</option>
+        <option value="Divorced">Divorced</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="NumberOfKids">Number of Kids:</label>
+      <select name="NumberOfKids" id="NumberOfKids" class="form-control">
+        {% for i in range(0, 11) %}
+            <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <p></p>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="submit-btn">
+    </div>
+  </form>
+
+{% endblock content %}
