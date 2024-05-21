@@ -1,0 +1,2 @@
+# InvestmentGenie
+Investment advisor
