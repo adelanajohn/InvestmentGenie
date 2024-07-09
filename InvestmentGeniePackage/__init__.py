@@ -7,7 +7,7 @@ from InvestmentGeniePackage import (
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = 'w4&L#3$Qc5@g'
+    app.secret_key = 'x6&K-2#gR&ju%'
 
     app.register_blueprint(pages.bp)
     app.register_error_handler(404, errors.page_not_found)

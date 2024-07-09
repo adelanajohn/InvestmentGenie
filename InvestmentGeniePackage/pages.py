@@ -5,6 +5,7 @@ import json
 
 bp = Blueprint("pages", __name__)
 
+# Home page
 @bp.route("/", methods=("GET", "POST"))
 def home():
     session['quizFlag']="1"
@@ -13,7 +14,7 @@ def home():
         
     return render_template("pages/home.html")
 
-
+# Recommendations page
 @bp.route("/recommendations", methods=("GET", "POST"))
 def recommendations():
     if request.method == "POST":
@@ -49,6 +50,7 @@ def recommendations():
 
         chart_x_values = []
         chart_y_values = []
+        
         # Loop through the top-level _investment_advice keys
         for category, details in _investment_advice.items():
             chart_x_values.append(category)
@@ -64,7 +66,7 @@ def recommendations():
     
     return render_template("pages/recommendations.html")
 
-
+# LLM call
 def get_response(name, age, risk_appetite, retirement_age, amount_to_invest, marital_status, number_of_kids):
     bedrock=boto3.client(service_name="bedrock-runtime")
 
