@@ -1,6 +1,6 @@
 # The InvestmentGenie Generative AI App ⭐️
 
-I’m excited to share a project that automates financial planning and investment services using generative AI. This project demonstrates the significant impact of well-crafted prompts on AI-generated content, highlighting the importance of prompt engineering in maximizing the potential of generative AI systems.
+This project automates financial planning and investment services using generative AI. The project demonstrates the significant impact of well-crafted prompts on AI-generated content, highlighting the importance of prompt engineering in maximizing the potential of generative AI systems.
 
 ## 1. What is the InvestmentGenie App 🤷?
 The InvestmentGenie app is a [wealth management](https://www.investopedia.com/terms/w/wealthmanagement.asp) service that uses generative AI to create investment portfolios. It makes use of the asset allocation strategy, which is the process of dividing an investment portfolio among different asset categories, like stocks and bonds.
@@ -109,7 +109,7 @@ Press CTRL+C or ^C on the terminal.
 ```shell
 deactivate
 ```
-s
+
 ### 3.3 Building the application
 
 #### Application factory (/InvestmentGeniePackage/__init__.py)
