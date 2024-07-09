@@ -85,7 +85,7 @@ aws configure
 ```shell
 AWS Access Key ID [****]:
 AWS Secret Access Key [****]:
-Default region name [us-east-1]: us-east -1
+Default region name [us-east-1]: us-east-1
 Default output format [json]: json
 ```
 
