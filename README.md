@@ -1,6 +1,6 @@
 # The InvestmentGenie Generative AI App ⭐️
 
-Hey folks! I’m excited to share a project that automates financial planning and investment services using generative AI. This project demonstrates the significant impact of well-crafted prompts on AI-generated content, highlighting the importance of prompt engineering in maximizing the potential of generative AI systems.
+I’m excited to share a project that automates financial planning and investment services using generative AI. This project demonstrates the significant impact of well-crafted prompts on AI-generated content, highlighting the importance of prompt engineering in maximizing the potential of generative AI systems.
 
 ## 1. What is the InvestmentGenie App 🤷?
 The InvestmentGenie app is a [wealth management](https://www.investopedia.com/terms/w/wealthmanagement.asp) service that uses generative AI to create investment portfolios. It makes use of the asset allocation strategy, which is the process of dividing an investment portfolio among different asset categories, like stocks and bonds.
@@ -16,6 +16,23 @@ Prompt engineering techniques include zero-shot prompting, few-shot prompting, c
 The following figure shows the architecture of the InvestmentGenie app.
 
 ![Architecture diagram](images/architecture.png)
+
+Users are able to configure the following input parameters on the app:
+- Name
+- Age
+- Risk appetite
+- Retirement age
+- Amount to invest
+- Marital status
+- Number of kids
+
+The personalized recommendations offered by the app includes sections such as:
+- Personal details
+- Recommendation summary
+- Investment recommendation details (allocation, allocation amount, reason for recommendation)
+- Allocation charts
+- Additional notes
+- Learning resources.
 
 ### 3.1 Model Selection
 A selection of models was reviewed, with consideration for use cases, model attributes, maximum tokens, cost, accuracy, performance, and supported languages. Based on this, Anthropic Claude-3 Sonnet was selected as best suited for this use case, as it strikes a balance between intelligence and speed, and it optimizes on speed and cost.
@@ -36,7 +53,7 @@ Establish a [Python venv module](https://docs.python.org/3/library/venv.html) vi
 Windows PowerShell
 ```shell
 python -m venv venv
-.\venv\Scripts\activatepython 
+.\venv\Scripts\activate
 ```
 
 macOS
@@ -76,7 +93,7 @@ Default output format [json]: json
 
 Windows PowerShell
 ```shell
-python -m flask —app InvestmentGeniePackage run —port 8000 —debug
+python -m flask --app InvestmentGeniePackage run --port 8000 --debug
 ```
 
 macOS
@@ -88,6 +105,8 @@ python -m flask —app InvestmentGeniePackage run —port 8000 —debug
 ### 3.3 Building the application
 
 #### Application factory (/InvestmentGeniePackage/__init__.py)
+Application Factory is a function that is responsible for creating the application object and its configuration.
+
 ```python
 from flask import Flask
 
@@ -106,7 +125,7 @@ def create_app():
 ```
 
 #### Blueprints (/InvestmentGeniePackage/pages.py)
-Blueprints are modular components in Flask that encapsulate a collection of related views. They can be easily imported in the __init__.py file, providing a convenient way to organize and structure your application's routes and functionality.
+Blueprints are modular components in Flask that encapsulate a collection of related views. They can be easily imported in the init file, providing a convenient way to organize and structure the application's routes and functionality.
 
 ```python
 from flask import Blueprint, render_template, redirect, request, session, url_for
@@ -289,6 +308,33 @@ def get_response(name, age, risk_appetite, retirement_age, amount_to_invest, mar
     response_text=response_body.get("content")[0].get("text")
     return response_text
 ```
+
+#### Base template (/InvestmentGeniePackage/templates/base.html)
+The base template is designed to establish a uniform structure for your project while allowing flexibility in certain content areas through Jinja's block functionality.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Investment Genie</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+<h1>Investment Genie</h1>
+<section>
+  <header>
+    {% block header %}{% endblock header %}
+  </header>
+  <main>
+    {% block content %}<p>No messages.</p>{% endblock content %}
+  </main>
+</section>
+</body>
+</html>
+```
+
+#### Child templates (/InvestmentGeniePackage/templates/pages)
+Template inheritance allows you to build a base “skeleton” template that contains all the common elements of your site and defines blocks that child templates can override.
 
 ## 4. Conclusion 🌅
 
