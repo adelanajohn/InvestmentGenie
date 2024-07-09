@@ -102,6 +102,14 @@ export FLASK_APP=InvestmentGeniePackage
 python -m flask —app InvestmentGeniePackage run —port 8000 —debug
 ```
 
+#### Quit the app
+Press CTRL+C or ^C on the terminal. 
+
+#### Exit the Python virtual environment
+```shell
+deactivate
+```
+
 ### 3.3 Building the application
 
 #### Application factory (/InvestmentGeniePackage/__init__.py)
