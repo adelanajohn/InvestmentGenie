@@ -308,6 +308,13 @@ def get_response(name, age, risk_appetite, retirement_age, amount_to_invest, mar
     response_text=response_body.get("content")[0].get("text")
     return response_text
 ```
+#### Page not found (/InvestmentGeniePackage/errors.py)
+```python
+from flask import render_template
+
+def page_not_found(e):
+    return render_template("errors/404.html"), 404
+```
 
 #### Base template (/InvestmentGeniePackage/templates/base.html)
 The base template is designed to establish a uniform structure for your project while allowing flexibility in certain content areas through Jinja's block functionality.
