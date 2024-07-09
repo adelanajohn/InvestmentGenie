@@ -34,18 +34,18 @@ The personalized recommendations offered by the app includes sections such as:
 - Additional notes
 - Learning resources.
 
+This app utilizes the following patterns:
+- Packages: For a hierarchical structuring of the module namespace.
+- Application factory: An application factory in [Flask](https://flask.palletsprojects.com) is a design pattern useful in scaling Flask projects. It helps in creating and configuring Flask projects flexibly and efficiently, making it easier to develop, test, and maintain as it grows and evolves.
+- Blueprints: Blueprints are a way to organize Flask applications into reusable and maintainable units.
+- Templates: Templates are files that contain static data as well as placeholders for dynamic data. A template is rendered with specific data to produce a final document. This app makes use of the [Jinja](https://jinja.palletsprojects.com) template engine.
+
 ### 3.1 Model Selection
 A selection of models was reviewed, with consideration for use cases, model attributes, maximum tokens, cost, accuracy, performance, and supported languages. Based on this, Anthropic Claude-3 Sonnet was selected as best suited for this use case, as it strikes a balance between intelligence and speed, and it optimizes on speed and cost.
 
 ### 3.2 Prerequisites
 
 You first need to set up an AWS account and configure your [AWS Identity and Access Management](https://aws.amazon.com/iam) (IAM) permissions correctly. You then need to install [Boto3](https://docs.aws.amazon.com/pythonsdk) and the [AWS CLI](https://aws.amazon.com/cli). You also need to [request](https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/prerequisites/bedrock-setup) Anthropic Claude 3 Sonnet model access on [Amazon Bedrock](https://aws.amazon.com/bedrock). You can find the code samples in the [GitHub repository](https://github.com/adelanajohn/InvestmentGenie).
-
-This app utilizes the following patterns:
-- Packages: For a hierarchical structuring of the module namespace.
-- Application factory: An application factory in [Flask](https://flask.palletsprojects.com) is a design pattern useful in scaling Flask projects. It helps in creating and configuring Flask projects flexibly and efficiently, making it easier to develop, test, and maintain as it grows and evolves.
-- Blueprints: Blueprints are a way to organize Flask applications into reusable and maintainable units.
-- Templates: Templates are files that contain static data as well as placeholders for dynamic data. A template is rendered with specific data to produce a final document. This app makes use of the [Jinja](https://jinja.palletsprojects.com) template engine.
 
 #### Python virtual environment setup
 Establish a [Python venv module](https://docs.python.org/3/library/venv.html) virtual environment in the project directory and then proceed to install all necessary dependencies. By using a project-specific virtual environment, you ensure that all dependencies are installed exclusively within that environment, rather than system-wide.
@@ -109,7 +109,7 @@ Press CTRL+C or ^C on the terminal.
 ```shell
 deactivate
 ```
-
+s
 ### 3.3 Building the application
 
 #### Application factory (/InvestmentGeniePackage/__init__.py)
