@@ -7,6 +7,8 @@ The InvestmentGenie app is a [wealth management](https://www.investopedia.com/te
 
 In this post, we focus on how to create a generative AI app that offers tailored personalized investment recommendations based on the lifestyle and preferences of users.
 
+This project is intended for educational purposes only and not for production use.
+
 ## 2. Prompt Engineering 🏗️
 Prompt engineering is a crucial skill in working with generative AI models. It involves crafting effective inputs (prompts) to guide AI models in producing desired outputs. 
 
@@ -45,7 +47,7 @@ A selection of models was reviewed, with consideration for use cases, model attr
 
 ### 3.2 Prerequisites
 
-You first need to set up an AWS account and configure your [AWS Identity and Access Management](https://aws.amazon.com/iam) (IAM) permissions correctly. You then need to [request](https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/prerequisites/bedrock-setup) Anthropic Claude 3 Sonnet model access on [Amazon Bedrock](https://aws.amazon.com/bedrock). You can find the code samples in the [GitHub repository](https://github.com/adelanajohn/InvestmentGenie).
+You first need to set up an AWS account and configure your [AWS Identity and Access Management](https://aws.amazon.com/iam) (IAM) permissions correctly. You then need to install [Boto3](https://docs.aws.amazon.com/pythonsdk) and the [AWS CLI](https://aws.amazon.com/cli). You also need to [request](https://catalog.workshops.aws/building-with-amazon-bedrock/en-US/prerequisites/bedrock-setup) Anthropic Claude 3 Sonnet model access on [Amazon Bedrock](https://aws.amazon.com/bedrock). You can find the code samples in the [GitHub repository](https://github.com/adelanajohn/InvestmentGenie).
 
 #### Python virtual environment setup
 Establish a [Python venv module](https://docs.python.org/3/library/venv.html) virtual environment in the project directory and then proceed to install all necessary dependencies. By using a project-specific virtual environment, you ensure that all dependencies are installed exclusively within that environment, rather than system-wide.
